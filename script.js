@@ -71,7 +71,7 @@ var CustomWidget = function () {
 					{
 					console.log(json);
 					result = json;
-					self.add_call_notify(json);
+					self.add_call_notify(JSON.parse(json));
 					return result;
 					},
 				'text',
