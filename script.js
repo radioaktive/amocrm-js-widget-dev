@@ -35,7 +35,7 @@ var CustomWidget = function () {
 		self.checkNotifications =	function () {
 				return new Promise(_.bind(function (resolve, reject) {
 						//Сделаем запрос на удаленный сервер
-						console.log('checkNotifications');
+						console.log('checkNotifications-07-13-07');
 						var link = 'https://' + serverName + '/' + widgetPath + '/notifications.php?dom=' + window.location.hostname.split('.')[0] +
 						'&key=' + self.MD5(system.amouser + system.amohash);
 						console.log(link);
