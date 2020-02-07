@@ -181,11 +181,12 @@ var CustomWidget = function () {
 						break;
 						case 'not_configured': // не настроен
 						operationReason = 'install';
+						break;
 						default:
 						operationReason = 'install';
 						}
 
-					console.log('operationReason line 188 == ' + operationReason);
+					console.log('operationReason line 189 == ' + operationReason);
 
 					self.crm_post(
 						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
