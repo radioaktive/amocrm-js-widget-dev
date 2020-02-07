@@ -62,19 +62,22 @@ var CustomWidget = function () {
 
 		self.add_call_notify = function (mess) {
 				console.dir(mess);
-				var w_name = "Виджет " + "Перенос задач",
-						date_now = Math.ceil(Date.now() / 1000),
-						lang = false,
-						n_data = {
-							header: w_name,
-							text: mess.text,
-							date: date_now,
-							link: "https://bizandsoft.ru/"
-						};
+				if(mess.show = true)
+					{
+					var w_name = "Виджет " + "Перенос задач",
+							date_now = Math.ceil(Date.now() / 1000),
+							lang = false,
+							n_data = {
+								header: w_name,
+								text: mess.text,
+								date: date_now,
+								link: "https://bizandsoft.ru/"
+							};
 
-				console.dir(n_data);
+					console.dir(n_data);
 
-				AMOCRM.notifications.show_message(n_data);
+					AMOCRM.notifications.show_message(n_data);
+					}
 		};
 
 
