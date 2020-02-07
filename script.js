@@ -185,7 +185,7 @@ var CustomWidget = function () {
 						globalOperationState = 'install';
 						}
 
-					console.log('operationReason line 189 == ' + operationReason);
+					console.log('operationReason line 189 == ' + globalOperationState);
 
 					self.crm_post(
 						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
@@ -306,7 +306,7 @@ var CustomWidget = function () {
 					globalOperationState = 'install';
 					}
 
-				console.log('operationReason line 309 == ' + operationReason);
+				console.log('operationReason line 309 == ' + globalOperationState);
 
 				self.crm_post(
 					'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
