@@ -93,7 +93,8 @@ var CustomWidget = function () {
 					{
 					var w_name = "Виджет " + "Перенос задач",
 							date_now = Math.ceil(Date.now() / 1000),
-							lang = false,
+							lang = false;
+					/*
 							n_data = {
 								header: w_name,
 								text: mess.text,
@@ -102,8 +103,16 @@ var CustomWidget = function () {
 							};
 
 					console.dir(n_data);
+					*/
+					var call_params = {
+				    text: mess.text,
+				    date: date_now,
+				    from: w_name,
+				    to: "You",
+					};
 
-					AMOCRM.notifications.show_notification(n_data);
+					console.dir(call_params);
+					AMOCRM.notifications.add_call(call_params);
 					self.postNotificationsRes(mess.id, false);
 					}
 		};
