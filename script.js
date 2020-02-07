@@ -67,7 +67,7 @@ var CustomWidget = function () {
 						lang = false,
 						n_data = {
 							header: w_name,
-							text: mess.message,
+							text: mess.text,
 							date: date_now,
 							link: "https://bizandsoft.ru/"
 						};
