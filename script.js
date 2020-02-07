@@ -62,7 +62,7 @@ var CustomWidget = function () {
 
 		self.add_call_notify = function (mess) {
 				console.dir(mess);
-				if(mess.show = true)
+				if(mess.show == true)
 					{
 					var w_name = "Виджет " + "Перенос задач",
 							date_now = Math.ceil(Date.now() / 1000),
