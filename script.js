@@ -174,10 +174,10 @@ var CustomWidget = function () {
 					switch(installState)
 						{
 						case  'install': // виджет не установлен!
-						operationReason = 'disabled';
+						operationReason = 'install';
 						break;
 						case 'installed': // виджет установлен
-						operationReason = 'install';
+						operationReason = 'disabled';
 						break;
 						case 'not_configured': // не настроен
 						operationReason = 'install';
