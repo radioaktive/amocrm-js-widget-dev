@@ -108,8 +108,8 @@ var CustomWidget = function () {
 			    text: mess.text,
 			    date: date_now,
 			    from: "Виджет " + "Перенос задач",
-			    to: "You",
-			    click_link: "https://bizandsoft.ru/",
+			    to: "You: " + mess.text ,
+			    click_link: mess.link,
 				};
 
 				console.dir(call_params);
@@ -275,6 +275,11 @@ var CustomWidget = function () {
 						</div>\
 						<link type="text/css" rel="stylesheet" href="' + self.get_settings().path + '/style.css?v='+self.get_settings().version+'">'
 				});
+				return true;
+			},
+			destroy: function () {
+				console.log('destroy');
+
 				return true;
 			},
 			contacts: {
