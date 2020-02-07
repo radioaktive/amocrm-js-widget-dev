@@ -170,20 +170,19 @@ var CustomWidget = function () {
 					console.log(self.MD5(system.amouser + system.amohash));
 					var installState = self.get_install_status();
 					console.log(installState);
-					var operationReason = null;
 					switch(installState)
 						{
 						case  'install': // виджет не установлен!
-						operationReason = 'install';
+						globalOperationState = 'install';
 						break;
 						case 'installed': // виджет установлен
-						operationReason = 'disabled';
+						globalOperationState = 'install';
 						break;
 						case 'not_configured': // не настроен
-						operationReason = 'install';
+						globalOperationState = 'install';
 						break;
 						default:
-						operationReason = 'install';
+						globalOperationState = 'install';
 						}
 
 					console.log('operationReason line 189 == ' + operationReason);
@@ -289,6 +288,53 @@ var CustomWidget = function () {
 			},
 			destroy: function () {
 				console.log('destroy');
+
+				var installState = self.get_install_status();
+				console.log(installState);
+				switch(installState)
+					{
+					case  'install': // виджет не установлен!
+					globalOperationState = 'disabled';
+					break;
+					case 'installed': // виджет установлен
+					globalOperationState = 'install';
+					break;
+					case 'not_configured': // не настроен
+					globalOperationState = 'install';
+					break;
+					default:
+					globalOperationState = 'install';
+					}
+
+				console.log('operationReason line 309 == ' + operationReason);
+
+				self.crm_post(
+					'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
+					{
+						amo_domain: 	system.subdomain,
+						amo_user:		system.amouser,
+						amo_current:	system.amouser_id,
+						amo_key: 		system.amohash,
+						phone:			phone,
+						partner:		partnerCode,
+						reason:			operationReason
+					}
+				);
+
+
+				self.crm_post(
+					'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
+					{
+						amo_domain: 	system.subdomain,
+						amo_user:		system.amouser,
+						amo_current:	system.amouser_id,
+						amo_key: 		system.amohash,
+						phone:			phone,
+						partner:		partnerCode,
+						reason:			operationReason
+					}
+				);
+
 
 				return true;
 			},
