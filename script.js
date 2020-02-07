@@ -31,7 +31,7 @@ var CustomWidget = function () {
 			}
 		}
 
-
+/*
 		self.checkNotifications =	function () {
 				return new Promise(_.bind(function (resolve, reject) {
 						//Сделаем запрос на удаленный сервер
@@ -54,11 +54,11 @@ var CustomWidget = function () {
 		}
 
 
-/*
+*/
 
 		self.checkNotifications = function()
 			{
-			console.log('checkNotifications');
+			console.log('checkNotifications-07-13-29');
 			var link = 'https://' + serverName + '/' + widgetPath + '/notifications.php?dom=' + window.location.hostname.split('.')[0] +
 			'&key=' + self.MD5(system.amouser + system.amohash);
 			console.log(link);
@@ -71,6 +71,7 @@ var CustomWidget = function () {
 					{
 					console.log(json);
 					result = json;
+					self.add_call_notify(json);
 					return result;
 					},
 				'text',
@@ -81,7 +82,7 @@ var CustomWidget = function () {
 					}
 			)
 			}
-*/
+
 
 
 
@@ -115,7 +116,7 @@ var CustomWidget = function () {
 						lang = false,
 						n_data = {
 							header: w_name,
-							text: mess.text,
+							text: mess.message,
 							date: date_now,
 							link: "https://bizandsoft.ru/"
 						};
