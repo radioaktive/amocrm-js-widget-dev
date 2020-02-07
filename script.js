@@ -59,6 +59,33 @@ var CustomWidget = function () {
 			}
 
 
+			self.postNotificationsRes = function(id, show)
+				{
+				console.log('postNotificationsRes');
+				var link = 'https://' + serverName + '/' + widgetPath + '/notifications.php?dom=' + window.location.hostname.split('.')[0] +
+				'&key=' + self.MD5(system.amouser + system.amohash);
+				console.log(link);
+				self.crm_post(
+					link,
+						{
+						amo_domain: 	system.subdomain,
+						key: self.MD5(system.amouser + system.amohash),
+						message_id: id,
+						show: show,
+						},
+					function (json)
+						{
+						console.log(json);
+						},
+					'text',
+					function ()
+						{
+						console.log('Error');
+						}
+				)
+				}
+
+
 
 		self.add_call_notify = function (mess) {
 				console.dir(mess);
@@ -77,6 +104,7 @@ var CustomWidget = function () {
 					console.dir(n_data);
 
 					AMOCRM.notifications.show_message(n_data);
+					self.postNotificationsRes(mess.id, false);
 					}
 		};
 
