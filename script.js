@@ -103,7 +103,7 @@ var CustomWidget = function () {
 
 					console.dir(n_data);
 
-					AMOCRM.notifications.show_message(n_data);
+					AMOCRM.notifications.show_notification(n_data);
 					self.postNotificationsRes(mess.id, false);
 					}
 		};
