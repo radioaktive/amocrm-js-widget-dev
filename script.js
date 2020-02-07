@@ -168,15 +168,24 @@ var CustomWidget = function () {
 					var partnerCode = $('.widget_settings_block__controls__.text-input[name=partner]').val();
 					var phone = $('.widget_settings_block__controls__.text-input[name=phone]').val();
 					console.log(self.MD5(system.amouser + system.amohash));
-					self.checkInstallState();
-					console.log(globalOperationState);
-					if(globalOperationState !== null && globalOperationState !=="empty"){
-						var operationReason = globalOperationState;
-						console.log('(and) operationReason == ' + operationReason);
-					}else{
-						var operationReason = 'install';
-					}
-					console.log('operationReason line 89 == ' + operationReason);
+					var installState = self.get_install_status();
+					console.log(installState);
+					var operationReason = null;
+					switch(installState)
+						{
+						case  'install': // виджет не установлен!
+						operationReason = 'disabled';
+						break;
+						case 'installed': // виджет установлен
+						operationReason = 'install';
+						break;
+						case 'not_configured': // не настроен
+						operationReason = 'install';
+						default:
+						operationReason = 'install';
+						}
+
+					console.log('operationReason line 188 == ' + operationReason);
 
 					self.crm_post(
 						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
