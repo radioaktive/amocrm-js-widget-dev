@@ -168,24 +168,25 @@ var CustomWidget = function () {
 					var partnerCode = $('.widget_settings_block__controls__.text-input[name=partner]').val();
 					var phone = $('.widget_settings_block__controls__.text-input[name=phone]').val();
 					console.log(self.MD5(system.amouser + system.amohash));
+					var operationReason = null;
 					var installState = self.get_install_status();
 					console.log(installState);
 					switch(installState)
 						{
 						case  'install': // виджет не установлен!
-						globalOperationState = 'install';
+						operationReason = 'install';
 						break;
 						case 'installed': // виджет установлен
-						globalOperationState = 'install';
+						operationReason = 'install';
 						break;
 						case 'not_configured': // не настроен
-						globalOperationState = 'install';
+						operationReason = 'install';
 						break;
 						default:
-						globalOperationState = 'install';
+						operationReason = 'install';
 						}
 
-					console.log('operationReason line 189 == ' + globalOperationState);
+					console.log('operationReason line 189 == ' + operationReason);
 
 					self.crm_post(
 						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
@@ -288,39 +289,25 @@ var CustomWidget = function () {
 			},
 			destroy: function () {
 				console.log('destroy');
-
+				var operationReason = null;
 				var installState = self.get_install_status();
 				console.log(installState);
 				switch(installState)
 					{
 					case  'install': // виджет не установлен!
-					globalOperationState = 'disabled';
+					operationReason = 'disabled';
 					break;
 					case 'installed': // виджет установлен
-					globalOperationState = 'install';
+					operationReason = 'install';
 					break;
 					case 'not_configured': // не настроен
-					globalOperationState = 'install';
+					operationReason = 'install';
 					break;
 					default:
-					globalOperationState = 'install';
+					operationReason = 'install';
 					}
 
-				console.log('operationReason line 309 == ' + globalOperationState);
-
-				self.crm_post(
-					'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
-					{
-						amo_domain: 	system.subdomain,
-						amo_user:		system.amouser,
-						amo_current:	system.amouser_id,
-						amo_key: 		system.amohash,
-						phone:			phone,
-						partner:		partnerCode,
-						reason:			operationReason
-					}
-				);
-
+				console.log('operationReason line 309 == ' + operationReason);
 
 				self.crm_post(
 					'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
