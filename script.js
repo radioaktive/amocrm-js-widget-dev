@@ -305,35 +305,23 @@ var CustomWidget = function () {
 				var operationReason = null;
 				var installState = self.get_install_status();
 				console.log(installState);
-				switch(installState)
-					{
-					case  'install': // виджет не установлен!
+				if (self.system().area == "settings") {
 					operationReason = 'disabled';
-					break;
-					case 'installed': // виджет установлен
-					operationReason = 'install';
-					break;
-					case 'not_configured': // не настроен
-					operationReason = 'install';
-					break;
-					default:
-					operationReason = 'install';
-					}
 
-				console.log('operationReason line 309 == ' + operationReason);
+					console.log('operationReason line 311 == ' + operationReason);
 
-				self.crm_post(
-					'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
-					{
-						amo_domain: 	system.subdomain,
-						amo_user:		system.amouser,
-						amo_current:	system.amouser_id,
-						amo_key: 		system.amohash,
-						partner:		partnerCode,
-						reason:			operationReason
-					}
-				);
-
+					self.crm_post(
+						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
+						{
+							amo_domain: 	system.subdomain,
+							amo_user:		system.amouser,
+							amo_current:	system.amouser_id,
+							amo_key: 		system.amohash,
+							partner:		partnerCode,
+							reason:			operationReason
+						}
+					);
+				}
 
 				return true;
 			},
