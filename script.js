@@ -209,6 +209,12 @@ var CustomWidget = function () {
 
 				var notifications = self.checkNotifications();
 				console.dir(notifications);
+
+
+				$("button#" + self.get_settings().widget_code +" .js-widget-uninstall ").on('click', function() {
+					console.log("js-widget-uninstall");
+					console.log(globalOperationState);
+				});
 				/*
 				AMOCRM.addNotificationCallback(self.get_settings().widget_code, function (data) {
 					console.log(data)
@@ -269,7 +275,7 @@ var CustomWidget = function () {
 					console.log(globalOperationState);
 				});
 
-				$("button#" + self.get_settings().widget_code +" .js-widget-uninstall ").on('click', function() {
+				$(".js-widget-uninstall").on('click', function() {
 					console.log("js-widget-uninstall");
 					console.log(globalOperationState);
 				});
