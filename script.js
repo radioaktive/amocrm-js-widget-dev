@@ -289,6 +289,7 @@ var CustomWidget = function () {
 			},
 			destroy: function () {
 				console.log('destroy');
+				var partnerCode = null;
 				var operationReason = null;
 				var installState = self.get_install_status();
 				console.log(installState);
