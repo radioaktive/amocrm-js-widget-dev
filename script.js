@@ -316,7 +316,6 @@ var CustomWidget = function () {
 						amo_user:		system.amouser,
 						amo_current:	system.amouser_id,
 						amo_key: 		system.amohash,
-						phone:			phone,
 						partner:		partnerCode,
 						reason:			operationReason
 					}
