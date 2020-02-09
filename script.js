@@ -168,6 +168,14 @@ var CustomWidget = function () {
 					var partnerCode = $('.widget_settings_block__controls__.text-input[name=partner]').val();
 					var phone = $('.widget_settings_block__controls__.text-input[name=phone]').val();
 					console.log(self.MD5(system.amouser + system.amohash));
+
+					$(".js-widget-uninstall").on('click', function() {
+						console.log("js-widget-uninstall");
+						console.log(globalOperationState);
+					});
+
+
+
 					var operationReason = null;
 					var installState = self.get_install_status();
 					console.log(installState);
