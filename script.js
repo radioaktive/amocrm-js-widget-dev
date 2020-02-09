@@ -136,7 +136,7 @@ var CustomWidget = function () {
 					console.log("js-widget-uninstall");
 					var operationReason = 'disabled';
 					var partnerCode = null;
-					console.log('operationReason line 138 == ' + operationReason);
+					console.log('operationReason line 139 == ' + operationReason);
 					self.crm_post(
 						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
 						{
