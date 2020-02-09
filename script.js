@@ -150,6 +150,10 @@ var CustomWidget = function () {
 					);
 					});
 
+					$(".js-widget-uninstall").on('click', function() {
+						console.log("js-widget-uninstall");
+					});
+
 				return true;
 			},
 			onSave: function () {
