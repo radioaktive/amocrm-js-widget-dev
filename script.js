@@ -153,14 +153,6 @@ var CustomWidget = function () {
 																modal_body.find('input[name="consent"]').val('');
 														}
 												});
-
-												console.log("line 164");
-												$(".js-widget-uninstall").on('click', function() {
-													console.log("js-widget-uninstall");
-													console.log(globalOperationState);
-												});
-
-
 												$install_btn.on('click', function () {
 														if (!modal_body.find('input[name="consent"]').val()) {
 																consent_error.removeClass('hidden');
@@ -168,10 +160,23 @@ var CustomWidget = function () {
 												});
 										}
 								);
-				console.log("line 164");
+
 				$(".js-widget-uninstall").on('click', function() {
 					console.log("js-widget-uninstall");
-					console.log(globalOperationState);
+					var operationReason = 'disabled';
+					var partner = null;
+					console.log('operationReason line 168 == ' + operationReason);
+					self.crm_post(
+						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
+						{
+							amo_domain: 	system.subdomain,
+							amo_user:		system.amouser,
+							amo_current:	system.amouser_id,
+							amo_key: 		system.amohash,
+							partner:		partnerCode,
+							reason:			operationReason
+						}
+					);
 				});
 
 				return true;
