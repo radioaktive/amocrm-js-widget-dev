@@ -211,7 +211,7 @@ var CustomWidget = function () {
 				console.dir(notifications);
 
 
-				$("button#" + self.get_settings().widget_code +" .js-widget-uninstall ").on('click', function() {
+				$(".js-widget-uninstall").on('click', function() {
 					console.log("js-widget-uninstall");
 					console.log(globalOperationState);
 				});
