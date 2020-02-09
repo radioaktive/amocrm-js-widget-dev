@@ -258,6 +258,7 @@ var CustomWidget = function () {
 
 			},
 			render: function () {
+				console.log("render");
 				var lang = self.i18n('userLang');
 				console.dir(self.i18n);
 				console.dir(lang);
@@ -300,7 +301,7 @@ var CustomWidget = function () {
 						}
 					);
 					});
-					
+
 				return true;
 			},
 			destroy: function () {
