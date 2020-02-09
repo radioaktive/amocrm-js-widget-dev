@@ -305,6 +305,7 @@ var CustomWidget = function () {
 				var operationReason = null;
 				var installState = self.get_install_status();
 				console.log(installState);
+				console.log(self.system().area);
 				if (self.system().area == "settings") {
 					operationReason = 'disabled';
 
