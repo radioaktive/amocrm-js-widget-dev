@@ -164,7 +164,7 @@ var CustomWidget = function () {
 				$(".js-widget-uninstall").on('click', function() {
 					console.log("js-widget-uninstall");
 					var operationReason = 'disabled';
-					var partner = null;
+					var partnerCode = null;
 					console.log('operationReason line 168 == ' + operationReason);
 					self.crm_post(
 						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
