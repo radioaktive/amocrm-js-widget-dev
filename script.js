@@ -258,6 +258,18 @@ var CustomWidget = function () {
 						$('.' + widgetTca + '_mgc-modal').remove();
 					});
 				});
+
+				$("button#" + self.get_settings().widget_code).on('click', function() {
+					console.log("button#");
+					console.log(globalOperationState);
+				});
+
+				$("button#save_" + self.get_settings().widget_code).on('click', function() {
+					console.log("button#save");
+					console.log(globalOperationState);
+				});
+
+
 				return true;
 
 			},
