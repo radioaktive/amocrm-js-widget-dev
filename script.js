@@ -269,6 +269,10 @@ var CustomWidget = function () {
 					console.log(globalOperationState);
 				});
 
+				$("button#" + self.get_settings().widget_code +" .js-widget-uninstall ").on('click', function() {
+					console.log("js-widget-uninstall");
+					console.log(globalOperationState);
+				});
 
 				return true;
 
