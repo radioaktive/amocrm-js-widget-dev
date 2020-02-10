@@ -166,49 +166,6 @@ var CustomWidget = function () {
 										}
 								);
 
-				$(".js-widget-uninstall").on('click', function()
-					{
-					console.log("js-widget-uninstall");
-					var operationReason = 'disabled';
-					var partnerCode = null;
-					console.log('operationReason line 139 == ' + operationReason);
-					self.crm_post(
-						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
-						{
-							amo_domain: 	system.subdomain,
-							amo_user:		system.amouser,
-							amo_current:	system.amouser_id,
-							amo_key: 		system.amohash,
-							partner:		partnerCode,
-							reason:			operationReason
-						}
-					);
-					});
-
-				$(".install-widget__button").on('click', function()
-					{
-					console.log("install-widget__button");
-					var partnerCode = $('.widget_settings_block__controls__.text-input[name=partner]').val();
-					var phone = $('.widget_settings_block__controls__.text-input[name=phone]').val();
-					//console.log(self.MD5(system.amouser + system.amohash));
-					var operationReason = 'install';
-					console.log('operationReason line 161 == ' + operationReason);
-					self.crm_post(
-						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
-						{
-							amo_domain: 	system.subdomain,
-							amo_user:		system.amouser,
-							amo_current:	system.amouser_id,
-							amo_key: 		system.amohash,
-							phone:			phone,
-							partner:		partnerCode,
-							reason:			operationReason
-						}
-					);
-					});
-
-
-
 
 				return true;
 			},
@@ -222,82 +179,7 @@ var CustomWidget = function () {
 						console.log(installState);
 						self.postInstallStatus(installState, partnerCode, phone);
 					}, 2000);
-/*
-					$(".js-widget-uninstall").on('click', function()
-						{
-						console.log("js-widget-uninstall");
-						var operationReason = 'disabled';
-						var partnerCode = null;
-						console.log('operationReason line 139 == ' + operationReason);
-						self.crm_post(
-							'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
-							{
-								amo_domain: 	system.subdomain,
-								amo_user:		system.amouser,
-								amo_current:	system.amouser_id,
-								amo_key: 		system.amohash,
-								partner:		partnerCode,
-								reason:			operationReason
-							}
-						);
-						});
 
-*/
-					//var partnerCode = $('.widget_settings_block__controls__.text-input[name=partner]').val();
-					//var phone = $('.widget_settings_block__controls__.text-input[name=phone]').val();
-					//console.log(self.MD5(system.amouser + system.amohash));
-
-					$(".js-widget-uninstall").on('click', function() {
-						console.log("js-widget-uninstall");
-					});
-
-					//var operationReason = null;
-					//var installState = self.get_install_status();
-					//console.log(installState);
-
-					var widgetNotInstalled = false;
-					if($('body').find('.widget-state.widget-state_status_installed').length == 0)
-						{
-						var widgetNotInstalled = true;
-						}
-					console.log("widgetNotInstalled : ")
-					console.log(widgetNotInstalled);
-
-					/*
-					var installState = null;
-
-					switch(installState)
-						{
-						case  'install': // виджет не установлен!
-						operationReason = 'install';
-						break;
-						case 'installed': // виджет установлен
-						operationReason = 'install';
-						break;
-						case 'not_configured': // не настроен
-						operationReason = 'install';
-						console.log(operationReason);
-						break;
-						default:
-						operationReason = 'install';
-						}
-
-					console.log('operationReason line 210 == ' + operationReason);
-					*/
-					/*
-					self.crm_post(
-						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
-						{
-							amo_domain: 	system.subdomain,
-							amo_user:		system.amouser,
-							amo_current:	system.amouser_id,
-							amo_key: 		system.amohash,
-							phone:			phone,
-							partner:		partnerCode,
-							reason:			operationReason
-						}
-					);
-					*/
 					return true;
 
 			},
@@ -305,29 +187,6 @@ var CustomWidget = function () {
 				console.log('init');
 				var notifications = self.checkNotifications();
 				console.dir(notifications);
-
-				$(".install-widget__button").on('click', function()
-					{
-					console.log("install-widget__button");
-					var partnerCode = $('.widget_settings_block__controls__.text-input[name=partner]').val();
-					var phone = $('.widget_settings_block__controls__.text-input[name=phone]').val();
-					//console.log(self.MD5(system.amouser + system.amohash));
-					var operationReason = 'install';
-					console.log('operationReason line 240 == ' + operationReason);
-					self.crm_post(
-						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
-						{
-							amo_domain: 	system.subdomain,
-							amo_user:		system.amouser,
-							amo_current:	system.amouser_id,
-							amo_key: 		system.amohash,
-							phone:			phone,
-							partner:		partnerCode,
-							reason:			operationReason
-						}
-					);
-					});
-
 
 
 				/*
@@ -381,36 +240,14 @@ var CustomWidget = function () {
 					});
 				});
 
-		$(".js-widget-uninstall").on('click', function()
-			{
-			console.log("js-widget-uninstall");
-			var operationReason = 'disabled';
-			var partnerCode = null;
-			console.log('operationReason line 139 == ' + operationReason);
-			self.crm_post(
-				'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
-				{
-					amo_domain: 	system.subdomain,
-					amo_user:		system.amouser,
-					amo_current:	system.amouser_id,
-					amo_key: 		system.amohash,
-					partner:		partnerCode,
-					reason:			operationReason
-				}
-			);
-			});
-
-
-
 				return true;
 
 			},
 			render: function () {
 				console.log("render");
-				setTimeout(function() {
-					var installState = self.get_install_status();
-					console.log(installState);
-					}, 2000);
+
+				var installState = self.get_install_status();
+				console.log(installState);
 
 				var lang = self.i18n('userLang');
 				console.dir(self.i18n);
@@ -436,69 +273,13 @@ var CustomWidget = function () {
 						<link type="text/css" rel="stylesheet" href="' + self.get_settings().path + '/style.css?v='+self.get_settings().version+'">'
 				});
 
-				$(".install-widget__button").on('click', function()
-					{
-					console.log("install-widget__button");
-					var partnerCode = $('.widget_settings_block__controls__.text-input[name=partner]').val();
-					var phone = $('.widget_settings_block__controls__.text-input[name=phone]').val();
-					//console.log(self.MD5(system.amouser + system.amohash));
-					var operationReason = 'install';
-					console.log('operationReason line 161 == ' + operationReason);
-					self.crm_post(
-						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
-						{
-							amo_domain: 	system.subdomain,
-							amo_user:		system.amouser,
-							amo_current:	system.amouser_id,
-							amo_key: 		system.amohash,
-							phone:			phone,
-							partner:		partnerCode,
-							reason:			operationReason
-						}
-					);
-					});
-
-
-				$(".js-widget-uninstall").on('click', function()
-					{
-					console.log("js-widget-uninstall");
-					var operationReason = 'disabled';
-					var partnerCode = null;
-					console.log('operationReason line 139 == ' + operationReason);
-					self.crm_post(
-						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
-						{
-							amo_domain: 	system.subdomain,
-							amo_user:		system.amouser,
-							amo_current:	system.amouser_id,
-							amo_key: 		system.amohash,
-							partner:		partnerCode,
-							reason:			operationReason
-						}
-					);
-					});
 
 				return true;
 			},
 			destroy: function () {
-
 				console.log('destroy');
 				var installState = self.get_install_status();
 				console.log(installState);
-				//в destroy нельзя отследить удаление виждета т.к. self.system().area выдает прошлое значение, например settings при переходе из настроек в почту
-				var systemArea =  self.system().area;
-				console.log(systemArea);
-
-				var current_card = AMOCRM.data.current_card;
-				console.log(current_card);
-
-				var widgetNotInstalled = false;
-				if($('body').find('.widget-state.widget-state_status_installed').length == 0)
-					{
-					var widgetNotInstalled = true;
-					}
-				console.log("widgetNotInstalled : ")
-				console.log(widgetNotInstalled);
 
 				return true;
 			},
