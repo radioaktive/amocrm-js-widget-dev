@@ -178,7 +178,7 @@ var CustomWidget = function () {
 						var installState = self.get_install_status();
 						console.log(installState);
 						self.postInstallStatus(installState, partnerCode, phone);
-					}, 2000);
+					}, 3000);
 
 					return true;
 
