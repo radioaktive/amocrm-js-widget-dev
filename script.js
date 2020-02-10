@@ -416,6 +416,12 @@ var CustomWidget = function () {
 				var installState = self.get_install_status();
 				console.log(installState);
 
+				var systemArea =  self.system().area;
+				console.log(systemArea);
+
+				var current_card = AMOCRM.data.current_card;
+				console.log(current_card);
+
 				var widgetNotInstalled = false;
 				if($('body').find('.widget-state.widget-state_status_installed').length == 0)
 					{
