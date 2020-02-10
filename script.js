@@ -338,6 +338,27 @@ var CustomWidget = function () {
 					});
 				});
 
+		$(".js-widget-uninstall").on('click', function()
+			{
+			console.log("js-widget-uninstall");
+			var operationReason = 'disabled';
+			var partnerCode = null;
+			console.log('operationReason line 139 == ' + operationReason);
+			self.crm_post(
+				'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
+				{
+					amo_domain: 	system.subdomain,
+					amo_user:		system.amouser,
+					amo_current:	system.amouser_id,
+					amo_key: 		system.amohash,
+					partner:		partnerCode,
+					reason:			operationReason
+				}
+			);
+			});
+
+
+
 				return true;
 
 			},
