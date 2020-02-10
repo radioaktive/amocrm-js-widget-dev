@@ -191,6 +191,17 @@ var CustomWidget = function () {
 					var operationReason = null;
 					var installState = self.get_install_status();
 					console.log(installState);
+
+					var widgetNotInstalled = false;
+					if($('body').find('.widget-state.widget-state_status_installed').length == 0)
+						{
+						var widgetNotInstalled = true;
+						}
+					console.log("widgetNotInstalled : ")
+					console.log(widgetNotInstalled);
+
+
+
 					switch(installState)
 						{
 						case  'install': // виджет не установлен!
