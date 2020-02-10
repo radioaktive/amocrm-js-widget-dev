@@ -105,6 +105,7 @@ var CustomWidget = function () {
 
 		this.callbacks = {
 			settings: function(modal_body){
+					console.log("settings");
 					 self.getTemplate(
 										'consent',
 										{},
@@ -154,6 +155,7 @@ var CustomWidget = function () {
 				return true;
 			},
 			onSave: function () {
+					console.log("onsave");
 					var partnerCode = $('.widget_settings_block__controls__.text-input[name=partner]').val();
 					var phone = $('.widget_settings_block__controls__.text-input[name=phone]').val();
 					console.log(self.MD5(system.amouser + system.amohash));
@@ -212,6 +214,7 @@ var CustomWidget = function () {
 			return true;
 			},
 			bind_actions: function () {
+				console.log("bind_actions");
 				console.log(self.MD5(system.amouser + system.amohash));
 				$('.' + widgetTca + '-button').on('click', function () {
 					var partner = self.get_settings().partner;
