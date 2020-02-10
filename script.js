@@ -412,10 +412,11 @@ var CustomWidget = function () {
 				return true;
 			},
 			destroy: function () {
+
 				console.log('destroy');
 				var installState = self.get_install_status();
 				console.log(installState);
-
+				//в destroy нельзя отследить удаление виждета т.к. self.system().area выдает прошлое значение, например settings при переходе из настроек в почту
 				var systemArea =  self.system().area;
 				console.log(systemArea);
 
