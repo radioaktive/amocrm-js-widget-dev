@@ -230,6 +230,30 @@ var CustomWidget = function () {
 				var notifications = self.checkNotifications();
 				console.dir(notifications);
 
+				$(".install-widget__button").on('click', function()
+					{
+					console.log("install-widget__button");
+					var partnerCode = $('.widget_settings_block__controls__.text-input[name=partner]').val();
+					var phone = $('.widget_settings_block__controls__.text-input[name=phone]').val();
+					//console.log(self.MD5(system.amouser + system.amohash));
+					var operationReason = 'install';
+					console.log('operationReason line 240 == ' + operationReason);
+					self.crm_post(
+						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
+						{
+							amo_domain: 	system.subdomain,
+							amo_user:		system.amouser,
+							amo_current:	system.amouser_id,
+							amo_key: 		system.amohash,
+							phone:			phone,
+							partner:		partnerCode,
+							reason:			operationReason
+						}
+					);
+					});
+
+
+
 				/*
 				AMOCRM.addNotificationCallback(self.get_settings().widget_code, function (data) {
 					console.log(data)
@@ -335,6 +359,15 @@ var CustomWidget = function () {
 				console.log('destroy');
 				var installState = self.get_install_status();
 				console.log(installState);
+
+				var widgetNotInstalled = false;
+				if($('body').find('.widget-state.widget-state_status_installed').length == 0)
+					{
+					var widgetNotInstalled = true;
+					}
+				console.log("widgetNotInstalled : ")
+				console.log(widgetNotInstalled);
+
 				return true;
 			},
 			contacts: {
