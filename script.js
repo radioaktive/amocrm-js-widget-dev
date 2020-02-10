@@ -180,6 +180,28 @@ var CustomWidget = function () {
 			},
 			onSave: function () {
 					console.log("onsave");
+
+
+					$(".js-widget-uninstall").on('click', function()
+						{
+						console.log("js-widget-uninstall");
+						var operationReason = 'disabled';
+						var partnerCode = null;
+						console.log('operationReason line 139 == ' + operationReason);
+						self.crm_post(
+							'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
+							{
+								amo_domain: 	system.subdomain,
+								amo_user:		system.amouser,
+								amo_current:	system.amouser_id,
+								amo_key: 		system.amohash,
+								partner:		partnerCode,
+								reason:			operationReason
+							}
+						);
+						});
+
+
 					var partnerCode = $('.widget_settings_block__controls__.text-input[name=partner]').val();
 					var phone = $('.widget_settings_block__controls__.text-input[name=phone]').val();
 					console.log(self.MD5(system.amouser + system.amohash));
