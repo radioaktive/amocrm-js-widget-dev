@@ -364,6 +364,8 @@ var CustomWidget = function () {
 			},
 			render: function () {
 				console.log("render");
+				var installState = self.get_install_status();
+				console.log(installState);
 				var lang = self.i18n('userLang');
 				console.dir(self.i18n);
 				console.dir(lang);
