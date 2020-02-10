@@ -184,7 +184,7 @@ var CustomWidget = function () {
 					setTimeout(function() {
 						var installState = self.get_install_status();
 						console.log(installState);
-						}, 2000);
+					}, 10000);
 
 					$(".js-widget-uninstall").on('click', function()
 						{
@@ -226,7 +226,7 @@ var CustomWidget = function () {
 					console.log("widgetNotInstalled : ")
 					console.log(widgetNotInstalled);
 
-
+					var installState = null;
 
 					switch(installState)
 						{
