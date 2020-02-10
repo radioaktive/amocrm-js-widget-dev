@@ -181,6 +181,10 @@ var CustomWidget = function () {
 			onSave: function () {
 					console.log("onsave");
 
+					setTimeout(function() {
+						var installState = self.get_install_status();
+						console.log(installState);
+						}, 2000);
 
 					$(".js-widget-uninstall").on('click', function()
 						{
@@ -211,8 +215,8 @@ var CustomWidget = function () {
 					});
 
 					var operationReason = null;
-					var installState = self.get_install_status();
-					console.log(installState);
+					//var installState = self.get_install_status();
+					//console.log(installState);
 
 					var widgetNotInstalled = false;
 					if($('body').find('.widget-state.widget-state_status_installed').length == 0)
@@ -364,8 +368,11 @@ var CustomWidget = function () {
 			},
 			render: function () {
 				console.log("render");
-				var installState = self.get_install_status();
-				console.log(installState);
+				setTimeout(function() {
+					var installState = self.get_install_status();
+					console.log(installState);
+					}, 2000);
+
 				var lang = self.i18n('userLang');
 				console.dir(self.i18n);
 				console.dir(lang);
