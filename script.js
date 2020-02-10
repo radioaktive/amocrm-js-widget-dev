@@ -28,6 +28,40 @@ var CustomWidget = function () {
 			)
 			}
 
+			self.postInstallStatus = function(installState, partnerCode, phone)
+				{
+				var operationReason = null;
+				switch(installState)
+					{
+					case  'install': // виджет не установлен!
+					operationReason = 'disabled';
+					break;
+					case 'installed': // виджет установлен
+					operationReason = 'install';
+					break;
+					case 'not_configured': // не настроен
+					operationReason = 'install';
+					console.log(operationReason);
+					break;
+					default:
+					operationReason = 'install';
+					}
+
+				console.log('operationReason line 49 == ' + operationReason);
+
+				self.crm_post(
+					'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
+					{
+						amo_domain: 	system.subdomain,
+						amo_user:		system.amouser,
+						amo_current:	system.amouser_id,
+						amo_key: 		system.amohash,
+						phone:			phone,
+						partner:		partnerCode,
+						reason:			operationReason
+					}
+				);
+				}
 
 			self.postNotificationsRes = function(id, show)
 				{
@@ -180,12 +214,15 @@ var CustomWidget = function () {
 			},
 			onSave: function () {
 					console.log("onsave");
+					var partnerCode = $('.widget_settings_block__controls__.text-input[name=partner]').val();
+					var phone = $('.widget_settings_block__controls__.text-input[name=phone]').val();
 
 					setTimeout(function() {
 						var installState = self.get_install_status();
 						console.log(installState);
-					}, 10000);
-
+						self.postInstallStatus(installState, partnerCode, phone);
+					}, 2000);
+/*
 					$(".js-widget-uninstall").on('click', function()
 						{
 						console.log("js-widget-uninstall");
@@ -205,16 +242,16 @@ var CustomWidget = function () {
 						);
 						});
 
-
-					var partnerCode = $('.widget_settings_block__controls__.text-input[name=partner]').val();
-					var phone = $('.widget_settings_block__controls__.text-input[name=phone]').val();
-					console.log(self.MD5(system.amouser + system.amohash));
+*/
+					//var partnerCode = $('.widget_settings_block__controls__.text-input[name=partner]').val();
+					//var phone = $('.widget_settings_block__controls__.text-input[name=phone]').val();
+					//console.log(self.MD5(system.amouser + system.amohash));
 
 					$(".js-widget-uninstall").on('click', function() {
 						console.log("js-widget-uninstall");
 					});
 
-					var operationReason = null;
+					//var operationReason = null;
 					//var installState = self.get_install_status();
 					//console.log(installState);
 
@@ -226,6 +263,7 @@ var CustomWidget = function () {
 					console.log("widgetNotInstalled : ")
 					console.log(widgetNotInstalled);
 
+					/*
 					var installState = null;
 
 					switch(installState)
@@ -245,6 +283,7 @@ var CustomWidget = function () {
 						}
 
 					console.log('operationReason line 210 == ' + operationReason);
+					*/
 					/*
 					self.crm_post(
 						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
