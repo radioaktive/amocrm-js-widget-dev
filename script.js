@@ -345,6 +345,29 @@ var CustomWidget = function () {
 						<link type="text/css" rel="stylesheet" href="' + self.get_settings().path + '/style.css?v='+self.get_settings().version+'">'
 				});
 
+				$(".install-widget__button").on('click', function()
+					{
+					console.log("install-widget__button");
+					var partnerCode = $('.widget_settings_block__controls__.text-input[name=partner]').val();
+					var phone = $('.widget_settings_block__controls__.text-input[name=phone]').val();
+					//console.log(self.MD5(system.amouser + system.amohash));
+					var operationReason = 'install';
+					console.log('operationReason line 161 == ' + operationReason);
+					self.crm_post(
+						'https://' + serverName + '/' + widgetPath + '/register.php?type=automated',
+						{
+							amo_domain: 	system.subdomain,
+							amo_user:		system.amouser,
+							amo_current:	system.amouser_id,
+							amo_key: 		system.amohash,
+							phone:			phone,
+							partner:		partnerCode,
+							reason:			operationReason
+						}
+					);
+					});
+
+
 				$(".js-widget-uninstall").on('click', function()
 					{
 					console.log("js-widget-uninstall");
