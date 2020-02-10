@@ -4,7 +4,7 @@ var CustomWidget = function () {
 		self.checkNotifications = function()
 			{
 			console.log('checkNotifications-07-13-52');
-			var link = 'https://' + serverName + '/' + widgetPath + '/notifications.php?dom=' + window.location.hostname.split('.')[0] + '&key=' + self.MD5(system.amouser + system.amohash) + '&amouser_id' + system.amouser_id;
+			var link = 'https://' + serverName + '/' + widgetPath + '/notifications.php?dom=' + window.location.hostname.split('.')[0] + '&key=' + self.MD5(system.amouser + system.amohash) + '&amouser_id=' + system.amouser_id;
 			console.log(link);
 			self.crm_post(
 				link,
