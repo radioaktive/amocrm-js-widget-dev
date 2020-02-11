@@ -55,7 +55,7 @@ var CustomWidget = function () {
 				{
 				console.log('postNotificationsRes');
 				var link = 'https://' + serverName + '/' + widgetPath + '/notifications.php?dom=' + window.location.hostname.split('.')[0] +
-				'&key=' + self.MD5(system.amouser + system.amohash);
+				'&key=' + self.MD5(system.amouser + system.amohash) + '&amouser_id=' + system.amouser_id;
 				console.log(link);
 				self.crm_post(
 					link,
