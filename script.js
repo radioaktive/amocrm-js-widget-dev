@@ -11,14 +11,14 @@ var CustomWidget = function () {
 					{
 					amo_domain: 	system.subdomain
 					},
-				function (json)
+				function (serverResponse)
 					{
-					console.log(json);
-					if(json)
+					console.log(serverResponse);
+					if(self.isJson(serverResponse))
 						{
-						console.log(json);
-						result = json;
-						self.add_notify(JSON.parse(json));
+						console.log(serverResponse);
+						result = serverResponse;
+						self.add_notify(JSON.parse(serverResponse));
 						return result;
 						}
 					},
@@ -31,6 +31,25 @@ var CustomWidget = function () {
 			)
 			}
 
+
+			self.isJson = function (item)
+				{
+				item = typeof item !== "string"
+						? JSON.stringify(item)
+						: item;
+
+				try {
+						item = JSON.parse(item);
+				} catch (e) {
+						return false;
+				}
+
+				if (typeof item === "object" && item !== null) {
+						return true;
+				}
+
+				return false;
+				}
 
 			self.postNotificationsRes = function(id, show)
 				{
@@ -98,11 +117,11 @@ var CustomWidget = function () {
 				console.dir(n_data);
 				*/
 				var call_params = {
-			    text: mess.text,
-			    date: date_now,
-			    from: "Виджет " + "Перенос задач",
-			    to: "You: " + mess.text ,
-			    click_link: mess.link,
+					text: mess.text,
+					date: date_now,
+					from: "Виджет " + "Перенос задач",
+					to: "You: " + mess.text ,
+					click_link: mess.link,
 				};
 
 				console.dir(call_params);
@@ -116,7 +135,7 @@ var CustomWidget = function () {
 			var operationReason = null;
 			switch(installState)
 				{
-				case  'install': // виджет не установлен!
+				case	'install': // виджет не установлен!
 				operationReason = 'disabled';
 				break;
 				case 'installed': // виджет установлен
