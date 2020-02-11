@@ -16,6 +16,7 @@ var CustomWidget = function () {
 					console.log(json);
 					if(json)
 						{
+						console.log(json);
 						result = json;
 						self.add_notify(JSON.parse(json));
 						return result;
@@ -73,6 +74,7 @@ var CustomWidget = function () {
 					link: mess.link
 					};
 					AMOCRM.notifications.add_error(error_params);
+					self.postNotificationsRes(mess.id, false);
 				}
 			}
 
