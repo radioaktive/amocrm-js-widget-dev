@@ -80,7 +80,7 @@ var CustomWidget = function () {
 
 			self.add_notify = function (mess) {
 				console.dir(mess);
-				if(mess.show == true)
+				if(mess.show == true && mess.type == "error")
 					{
 					var w_name = "Виджет " + widgetRusName,
 							date_now = Math.ceil(Date.now() / 1000),
@@ -94,7 +94,24 @@ var CustomWidget = function () {
 					};
 					AMOCRM.notifications.add_error(error_params);
 					self.postNotificationsRes(mess.id, false);
-				}
+					}
+				//default:
+				if(mess.show == true && mess.type !== "error")
+					{
+					var w_name = "Виджет " + widgetRusName,
+							date_now = Math.ceil(Date.now() / 1000),
+							lang = false;
+
+					var message_params = {
+					header: w_name,
+					text: mess.text,
+					date: date_now,
+					link: mess.link
+					};
+
+					AMOCRM.notifications.show_message(message_params);
+					self.postNotificationsRes(mess.id, false);
+					}
 			}
 
 
