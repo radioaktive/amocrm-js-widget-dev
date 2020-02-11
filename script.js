@@ -119,36 +119,6 @@ var CustomWidget = function () {
 
 
 
-		self.add_call_notify = function (mess) {
-			console.dir(mess);
-			if(mess.show == true)
-				{
-				var w_name = "Виджет " + widgetRusName,
-						date_now = Math.ceil(Date.now() / 1000),
-						lang = false;
-				/*
-						n_data = {
-							header: w_name,
-							text: mess.text,
-							date: date_now,
-							link: "https://bizandsoft.ru/"
-						};
-
-				console.dir(n_data);
-				*/
-				var call_params = {
-					text: mess.text,
-					date: date_now,
-					from: "Виджет " + "Перенос задач",
-					to: "You: " + mess.text ,
-					click_link: mess.link,
-				};
-
-				console.dir(call_params);
-				AMOCRM.notifications.add_call(call_params);
-				self.postNotificationsRes(mess.id, false);
-				}
-		};
 
 		self.postInstallStatus = function(installState, partnerCode, phone)
 			{
