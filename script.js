@@ -78,10 +78,12 @@ var CustomWidget = function () {
 				}
 
 
-			self.add_notify = function (mess) {
+			self.add_notify = function (mess)
+				{
 				console.dir(mess);
 				if(mess.show == true && mess.type == "error")
 					{
+					console.dir("add_error");
 					var w_name = "Виджет " + widgetRusName,
 							date_now = Math.ceil(Date.now() / 1000),
 							lang = false;
@@ -98,6 +100,7 @@ var CustomWidget = function () {
 				//default:
 				if(mess.show == true && mess.type !== "error")
 					{
+					console.dir("show_message");
 					var w_name = "Виджет " + widgetRusName,
 							date_now = Math.ceil(Date.now() / 1000),
 							lang = false;
@@ -112,7 +115,7 @@ var CustomWidget = function () {
 					AMOCRM.notifications.show_message(message_params);
 					self.postNotificationsRes(mess.id, false);
 					}
-			}
+				}
 
 
 
