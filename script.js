@@ -670,6 +670,10 @@ var CustomWidget = function () {
 				});
 				return true;
 			},
+			destroy: function () {
+				console.log('destroy');
+				return true;
+			},
 			contacts: {
 				selected: function () {
 				}
