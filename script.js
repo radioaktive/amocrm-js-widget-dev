@@ -420,10 +420,11 @@ var CustomWidget = function () {
 				if(AMOCRM.data.current_entity == "leads"){
 					var queryUrl = 'https://' + window.location.hostname.split('.')[0] + '.amocrm.ru/api/v2/leads?id=' + AMOCRM.data.current_card.id;
 					console.log("leads queryUrl");
+					console.log(queryUrl);
 				}else if(AMOCRM.data.current_entity == "contacts"){
 					var queryUrl = 'https://' + window.location.hostname.split('.')[0] + '.amocrm.ru/api/v2/contacts?id=' + AMOCRM.data.current_card.id;
 					console.log("contacts queryUrl");
-					console.log("queryUrl");
+					console.log(queryUrl);
 				}else if(AMOCRM.data.current_entity == "companies"){
 					var queryUrl = 'https://' + window.location.hostname.split('.')[0] + '.amocrm.ru/api/v2/companies?id=' + AMOCRM.data.current_card.id;
 				}
