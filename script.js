@@ -97,66 +97,8 @@ var CustomWidget = function () {
 				return true;
 			},
 			onSave: function () {
-				if($('.widget-settings__base-space').length > 0){
-					if($('body').find('.widget-state.widget-state_statusstatus_installed').length == 0){
-						if(typeof($('#' + widgetTca + '_accept').get(0).checked) == "boolean" && $('#' + widgetTca + '_accept').get(0).checked == false){
-							$('#' + widgetTca + '_agreement_error')
-								.css('display', 'block')
-								.css('margin-bottom', '25px')
-								.css('margin-top', '20px')
-								.css('background-color', '#ffbbbb')
-								.css('padding', '7px')
-								.css('border-radius', '5px')
-								.css('border', '1px solid #ff5454')
-								.css('color', '#a70d0d')
-								.text('Прежде, чем виджет будет успешно установлен, Вам необходимо дать согласие на передачу авторизационной информации на сервера компании «Бизнес и софт».');
-							$('#' + self.get_settings().widget_code + ' > .button-input-inner').css('display', '');
-							$('#' + self.get_settings().widget_code + ' > .button-input__spinner').css('display', 'none');
-							$('#' + self.get_settings().widget_code).removeClass('button-input-loading');
-							$('#' + self.get_settings().widget_code).removeAttr('data-loading');
-							$('#' + widgetTca + '_accept_tense')
-								.css('color', '#a70d0d');
-							return false;
-						}else{
-							$('#' + widgetTca + '_agreement_error').css('display', 'none');
-							$('#' + widgetTca + '_accept_tense')
-								.css('color', 'inherit');
-							return true;
-						}
-					}else{
-						return true;
-					}
-				}else{
-					if($('#widget_active__sw').length > 0){
-						return true;
-					}else{
-						if(typeof($('#' + widgetTca + '_accept').get(0).checked) == "boolean" && $('#' + widgetTca + '_accept').get(0).checked == false){
-							if($('#' + widgetTca + '_agreement_error_old').length == 0){
-								$('.widget_settings_block__fields').append('<div class="widget_settings_block__item_field"><div id="' + widgetTca + '_agreement_error_old"></div></div>');
-							}
-							$('#' + widgetTca + '_agreement_error_old')
-								.css('display', 'block')
-								.css('background-color', '#ffbbbb')
-								.css('padding', '7px')
-								.css('border-radius', '5px')
-								.css('border', '1px solid #ff5454')
-								.css('color', '#a70d0d')
-								.text('Прежде, чем виджет будет успешно установлен, Вам необходимо дать согласие на передачу авторизационной информации на сервера компании «Бизнес и софт».');
-							$('#save_' + self.get_settings().widget_code + ' > .button-input-inner').css('display', '');
-							$('#save_' + self.get_settings().widget_code + ' > .button-input__spinner').css('display', 'none');
-							$('#save_' + self.get_settings().widget_code).removeClass('button-input-loading');
-							$('#save_' + self.get_settings().widget_code).removeAttr('data-loading');
-							$('#' + widgetTca + '_accept_tense')
-								.css('color', '#a70d0d');
-							return false;
-						}else{
-							$('#' + widgetTca + '_agreement_error_old').css('display', 'none');
-							$('#' + widgetTca + '_accept_tense')
-								.css('color', 'inherit');
-							return true;
-						}
-					}
-				}
+				console.log("onsave");
+				return true;
 			},
 			init: function () {
 				return true;
