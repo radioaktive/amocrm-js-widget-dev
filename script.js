@@ -436,6 +436,7 @@ var CustomWidget = function () {
 								Обработка сделок
 							*/
 							if(response._embedded.items[0].contacts.id !== undefined){
+								console.log(response._embedded.items[0].contacts.id);
 								for(var thsCntId=0; thsCntId<response._embedded.items[0].contacts.id.length; thsCntId++){
 									var currentCardInfo = $.getJSON(
 										'https://' + window.location.hostname.split('.')[0] + '.amocrm.ru/api/v2/contacts?id=' + response._embedded.items[0].contacts.id[thsCntId],
@@ -476,6 +477,7 @@ var CustomWidget = function () {
 							for(var thsCstFld=0; thsCstFld<response._embedded.items[0].custom_fields.length; thsCstFld++){
 								if(response._embedded.items[0].custom_fields[thsCstFld].name == "Телефон"){
 									var phoneFound = true;
+									console.log(phoneFound);
 									for(var thsPhnVal=0; thsPhnVal<response._embedded.items[0].custom_fields[thsCstFld].values.length; thsPhnVal++){
 										var numberPre = response._embedded.items[0].custom_fields[thsCstFld].values[thsPhnVal].value.replace(/\D+/g,"");
 										if(numberPre.substring(0,1) == "80"){
