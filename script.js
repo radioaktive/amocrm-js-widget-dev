@@ -1,6 +1,6 @@
 var CustomWidget = function () {
 		var self = this, system = self.system(), widgetTca = 'bizandsoft_tzdata', widgetPath = 'retask2', currentUser = $('.n-avatar').first().attr('id'), serverName = 'amo.bizandsoft.ru';
-		
+
 		function updateTime(parentEl){
 			var tzone = $(parentEl).text().match(/GMT(.*?);/);
 			var nowTime = new Date();
@@ -15,23 +15,23 @@ var CustomWidget = function () {
 			outTime = nowTime.getHours() + ':' + nowMin;
 			$(parentEl).find($("span")).text(outTime);
 		}
-		
+
 		setInterval(function() {
 			for(var i = 0; i < $(".bizandsoft_add-info").length; i++)
 			{
 				updateTime($(".bizandsoft_add-info")[i]);
 			}
 			}, 60000);
-		
-		function  addTime(time,number,workstate,country,tzone) 
+
+		function  addTime(time,number,workstate,country,tzone)
 		{
 			var lim = $('input[name="CFV[264647]"]').val();
 			var now = new Date();
 			var t = new Date(now.getFullYear(), now.getMonth(), now.getDate(), lim.slice(0,2), lim.slice(3,5),0, 0);
 			var t1 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), time.slice(12,14), time.slice(15,17),0, 0);
-			
+
 			var shortTime = time.slice(-8,-3);
-			
+
 			var phoneFlds = $('input.control-phone__formatted');
 			var phoneNum = number.slice(1);
 			var divTime = '<span class="bizandsoft_add-info';
@@ -60,7 +60,7 @@ var CustomWidget = function () {
 							</tr>\
 							<tr class="' + widgetTca + '_ctime">\
 								<td style="text-align:right;">' + time.slice(0,10) + ' <span calss="sortTime">' + time.slice(12,17) +'</span><br>';
-								if (tzone !==null) 
+								if (tzone !==null)
 									addDescr = addDescr + tzone;
 								addDescr = addDescr + '</td>\
 							</tr>\
@@ -75,9 +75,10 @@ var CustomWidget = function () {
 				}
 			}
         }
-		
+
 		this.callbacks = {
 			settings: function(){
+				console.log("settings");
 				if($('.widget-settings__base-space').length > 0){
 					var tcaWdgVersionStyleInc = 'margin-left: 1px;width: calc(100% - 2px);margin-bottom: -30px;margin-right:1px;background-color:#f4f4f4;';
 					if($('body').find('.widget-state.widget-state_status_installed').length == 0){
@@ -215,19 +216,19 @@ var CustomWidget = function () {
 					*/
 					$('#' + widgetTca + '_info_error').fadeOut().empty();
 					$('#' + widgetTca + '_info_succeed').fadeOut().empty();
-					
+
 					var definedNumber = $('#' + widgetTca + '_form_searchable').val();
 					if((definedNumber.length<1) || (definedNumber == "Обновить")){
 						$('#' + widgetTca + '_info_error').
 							text('Не выбран номер для проверки').
 							fadeIn();
 					}else{
-						$.post('https://' + serverName + '/' + widgetPath + '/process.php?', 
-							{ 
-								number: definedNumber, 
+						$.post('https://' + serverName + '/' + widgetPath + '/process.php?',
+							{
+								number: definedNumber,
 								key: self.get_settings().widget_key,
 								current: currentUser,
-								amo_domain: window.location.hostname.split('.')[0], 
+								amo_domain: window.location.hostname.split('.')[0],
 								amo_user: system.amouser,
 								amo_hash: system.amohash
 							})
@@ -283,7 +284,7 @@ var CustomWidget = function () {
 											var gmtOffset = data.gmtOffset;
 										}
 										var timezoneFull = '(GMT' + gmtOffset + '; ' + data.timezone + ')'
-										$('#' + widgetTca + '_current_time').html('<span style="font-weight:bold;">' + data.current + '</span><br>' + timezoneFull);									
+										$('#' + widgetTca + '_current_time').html('<span style="font-weight:bold;">' + data.current + '</span><br>' + timezoneFull);
 										addTime(data.current,definedNumber,data.worktime,data.x_country,timezoneFull);
 									}else{
 										$('.' + widgetTca + '_ctime').css('display', 'none');
@@ -310,13 +311,13 @@ var CustomWidget = function () {
 							var queryUrl = 'https://' + window.location.hostname.split('.')[0] + '.amocrm.ru/api/v2/companies?id=' + AMOCRM.data.current_card.id;
 						}
 						var currentCardInfo = $.getJSON(
-							queryUrl, 
+							queryUrl,
 							function ( response ){
 								if(AMOCRM.data.current_entity == "leads"){
 									if(response._embedded.items[0].contacts.id !== undefined){
 										for(var thsCntId=0; thsCntId<response._embedded.items[0].contacts.id.length; thsCntId++){
 											var currentCardInfo = $.getJSON(
-												'https://' + window.location.hostname.split('.')[0] + '.amocrm.ru/api/v2/contacts?id=' + response._embedded.items[0].contacts.id[thsCntId], 
+												'https://' + window.location.hostname.split('.')[0] + '.amocrm.ru/api/v2/contacts?id=' + response._embedded.items[0].contacts.id[thsCntId],
 												function ( cntResponse ){
 													for(var thsCstFld=0; thsCstFld<cntResponse._embedded.items[0].custom_fields.length; thsCstFld++){
 														if(cntResponse._embedded.items[0].custom_fields[thsCstFld].name == "Телефон"){
@@ -407,7 +408,7 @@ var CustomWidget = function () {
 			$(document).ready(function(){
 				if((AMOCRM.data.current_entity == "leads") || (AMOCRM.data.current_entity == "contacts") || (AMOCRM.data.current_entity == "companies"))
 				{
-					var inputsNum = $('[data-pei-code="phone"] input[type="text"]');	
+					var inputsNum = $('[data-pei-code="phone"] input[type="text"]');
 					var fomatedNum = new Array();
 					for (var i=0; i < inputsNum.length; i++)
 					{
@@ -417,9 +418,9 @@ var CustomWidget = function () {
 						};
 						fomatedNum.push(tempel);
 					}
-					$.post('https://' + serverName + '/' + widgetPath + '/process.php?', 
-							{ 
-								number: fomatedNum, 
+					$.post('https://' + serverName + '/' + widgetPath + '/process.php?',
+							{
+								number: fomatedNum,
 								worktime: self.get_settings().worktime,
 								key: self.get_settings().widget_key,
 								current: currentUser,
@@ -445,19 +446,20 @@ var CustomWidget = function () {
 									}
 								}
 							})
-							
-						/*$.post('https://' + serverName + '/' + widgetPath + '/index.php?act=check', 
-							{ 
+
+						/*$.post('https://' + serverName + '/' + widgetPath + '/index.php?act=check',
+							{
 							})
 							.done(function( data ) {
-								
+
 							})*/
-					
-				}	
+
+				}
 			 });
 				return true;
 			},
 			render: function () {
+				console.log("render");
 				var lang = self.i18n('userLang');
 				w_code = self.get_settings().widget_code;
 				if(w_code.substr(0, 4) == "amo_"){
@@ -481,7 +483,7 @@ var CustomWidget = function () {
 					var queryUrl = 'https://' + window.location.hostname.split('.')[0] + '.amocrm.ru/api/v2/companies?id=' + AMOCRM.data.current_card.id;
 				}
 				var currentCardInfo = $.getJSON(
-					queryUrl, 
+					queryUrl,
 					function ( response ){
 						if(AMOCRM.data.current_entity == "leads"){
 							/*
@@ -490,7 +492,7 @@ var CustomWidget = function () {
 							if(response._embedded.items[0].contacts.id !== undefined){
 								for(var thsCntId=0; thsCntId<response._embedded.items[0].contacts.id.length; thsCntId++){
 									var currentCardInfo = $.getJSON(
-										'https://' + window.location.hostname.split('.')[0] + '.amocrm.ru/api/v2/contacts?id=' + response._embedded.items[0].contacts.id[thsCntId], 
+										'https://' + window.location.hostname.split('.')[0] + '.amocrm.ru/api/v2/contacts?id=' + response._embedded.items[0].contacts.id[thsCntId],
 										function ( cntResponse ){
 											for(var thsCstFld=0; thsCstFld<cntResponse._embedded.items[0].custom_fields.length; thsCstFld++){
 												if(cntResponse._embedded.items[0].custom_fields[thsCstFld].name == "Телефон"){
@@ -517,7 +519,7 @@ var CustomWidget = function () {
 													}
 												}
 											}
-											
+
 										});
 								}
 								var classPref = '';
@@ -550,7 +552,7 @@ var CustomWidget = function () {
 										<li data-value="+' + numberPre + '" class="control--select--list--item' + classPref + '">\
 											<span class="control--select--list--item-inner" title="+' + numberPre + '">+' + numberPre + '</span>\
 										</li>');
-									}	
+									}
 								}
 							}
 							if(phoneFound === undefined){
