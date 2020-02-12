@@ -4,7 +4,6 @@
 
 		self.checkNotifications = function()
 			{
-			console.log('checkNotifications');
 			var link = 'https://' + serverName + '/' + widgetPath + '/'+system.subdomain+'/notif';
 			self.crm_post(
 				link,
@@ -15,7 +14,6 @@
 					},
 				function (serverResponse)
 					{
-					console.log(serverResponse);
 					if(self.isJson(serverResponse))
 						{
 						result = serverResponse;
@@ -76,11 +74,9 @@
 
 		self.add_notify = function (mess)
 			{
-			console.log('add_notify');
 			var w_name = "Виджет " + self.i18n('widget').name,
 						date_now = Math.ceil(Date.now() / 1000),
 						lang = false;
-			console.log(w_name);
 			var message_params = {
 				header: w_name,
 				text: mess.text,
@@ -183,7 +179,6 @@
 
 					setTimeout(function() {
 						var installState = self.get_install_status();
-						console.log(installState);
 						self.postInstallStatus(installState, partnerCode, phone);
 					}, 3000);
 
@@ -238,7 +233,6 @@
 
 			},
 			render: function () {
-				console.log("render");
 				var lang = self.i18n('userLang');
 				w_code = self.get_settings().widget_code;
 				if (typeof(AMOCRM.data.current_card) != 'undefined') {
@@ -258,13 +252,6 @@
 						</div>\
 						<link type="text/css" rel="stylesheet" href="' + self.get_settings().path + '/style.css?v='+self.get_settings().version+'">'
 				});
-				return true;
-			},
-			destroy: function () {
-				console.log('destroy');
-				var installState = self.get_install_status();
-				console.log(installState);
-
 				return true;
 			},
 			contacts: {
