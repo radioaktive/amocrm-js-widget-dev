@@ -17,6 +17,7 @@
 					{
 					if(self.isJson(serverResponse))
 						{
+						console.log(serverResponse);
 						result = serverResponse;
 						self.add_notify(JSON.parse(serverResponse));
 						return result;
