@@ -237,6 +237,7 @@
 
 			},
 			render: function () {
+				console.log("render");
 				var lang = self.i18n('userLang');
 				w_code = self.get_settings().widget_code;
 				if (typeof(AMOCRM.data.current_card) != 'undefined') {
@@ -256,6 +257,13 @@
 						</div>\
 						<link type="text/css" rel="stylesheet" href="' + self.get_settings().path + '/style.css?v='+self.get_settings().version+'">'
 				});
+				return true;
+			},
+			destroy: function () {
+				console.log('destroy');
+				var installState = self.get_install_status();
+				console.log(installState);
+
 				return true;
 			},
 			contacts: {
