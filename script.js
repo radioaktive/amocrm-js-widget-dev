@@ -98,7 +98,6 @@
 
 		self.postInstallStatus = function(installState, partnerCode, phone)
 			{
-			console.log(phone);
 			var operationReason = null;
 			switch(installState)
 				{
@@ -177,11 +176,9 @@
 
 					var partnerCode = $('.widget_settings_block__controls__.text-input[name=partner]').val();
 					var phone = $('.widget_settings_block__controls__.text-input[name=customer]').val();
-					console.log(phone);
-					
+
 					setTimeout(function() {
 						var installState = self.get_install_status();
-						console.log(phone);
 						self.postInstallStatus(installState, partnerCode, phone);
 					}, 3000);
 
