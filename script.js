@@ -4,6 +4,7 @@
 
 		self.checkNotifications = function()
 			{
+			console.log('checkNotifications');
 			var link = 'https://' + serverName + '/' + widgetPath + '/'+system.subdomain+'/notif';
 			self.crm_post(
 				link,
