@@ -98,6 +98,7 @@
 
 		self.postInstallStatus = function(installState, partnerCode, phone)
 			{
+			console.log(phone);
 			var operationReason = null;
 			switch(installState)
 				{
@@ -179,6 +180,7 @@
 
 					setTimeout(function() {
 						var installState = self.get_install_status();
+						console.log(phone);
 						self.postInstallStatus(installState, partnerCode, phone);
 					}, 3000);
 
