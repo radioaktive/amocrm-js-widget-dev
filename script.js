@@ -1,6 +1,6 @@
 //define(['jquery'], function($, Modal){
 	var CustomWidget = function () {
-		var self = this, system = self.system(), widgetTca = 'bizandsoft_test', widgetPath = 'test', currentUser = $('.n-avatar').first().attr('id'), serverName = 'amo.bizandsoft.ru';
+		var self = this, system = self.system(), widgetTca = 'bizandsoft_test', widgetPath = 'retask2', currentUser = $('.n-avatar').first().attr('id'), serverName = 'amo.bizandsoft.ru';
 
 		self.checkNotifications = function()
 			{
