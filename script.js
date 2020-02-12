@@ -180,7 +180,7 @@
 
 					var partnerCode = $('.widget_settings_block__controls__.text-input[name=partner]').val();
 					var phone = $('.widget_settings_block__controls__.text-input[name=customer]').val();
-					
+
 					setTimeout(function() {
 						var installState = self.get_install_status();
 						console.log(installState);
