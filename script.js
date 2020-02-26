@@ -458,5 +458,5 @@
 		};
 		return this;
 	};
-	return CustomWidget;
-});
+//	return CustomWidget;
+//});
