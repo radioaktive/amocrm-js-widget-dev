@@ -187,6 +187,8 @@
 			},
 			init: function () {
 			var notifications = self.checkNotifications();
+			var settingsWidget = self.get_settings().widget_code;
+			console.log(settingsWidget);
 			return true;
 			},
 			bind_actions: function () {
