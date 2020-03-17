@@ -192,6 +192,8 @@
 			var parameter = {}
 			parameter['par' + phone] = 'text1';
 			self.set_settings(parameter);
+			var mPhone = 'Vasya ' + phone;
+			self.set_settings({partner: mPhone});
 			var settingsWidget = self.get_settings();
 			console.dir(settingsWidget);
 			return true;
