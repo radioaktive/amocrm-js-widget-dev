@@ -188,8 +188,8 @@
 			},
 			init: function () {
 			var notifications = self.checkNotifications();
-			var settingsWidget = self.get_settings().widget_code;
-			console.log(settingsWidget);
+			var settingsWidget = self.get_settings();
+			console.dir(settingsWidget);
 			return true;
 			},
 			bind_actions: function () {
