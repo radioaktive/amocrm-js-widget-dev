@@ -189,7 +189,9 @@
 			init: function () {
 			var notifications = self.checkNotifications();
 			var phone = self.get_settings().customer;
-			var parameter ='{' + parameter + phone + ': "text"}';
+			var parameter;
+			parameter.phone = 'par' + phone;
+			parameter.text = 'text1';
 			self.set_settings(parameter);
 			var settingsWidget = self.get_settings();
 			console.dir(settingsWidget);
